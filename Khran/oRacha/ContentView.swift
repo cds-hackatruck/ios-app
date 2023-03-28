@@ -8,78 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var progress = 1.0
-    @State private var count = 60
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    @StateObject var viewModel = ViewModel()
+    @State var oldTimestamp = 0
+    @State var firstRead = true
+    
     var body: some View {
         NavigationStack{
-            GeometryReader {geo in
-                VStack{
-                    Spacer()
-
-                    Text("Você está bem?")
-                        .bold()
-                        .font(.system(size: 38))
-
-                    Spacer()
-
-                    
-                    NavigationLink(destination: naoBem()){
-                        ZStack{
-                            Circle()
-                                .trim(from: 0, to: progress)
-                                .stroke(style: StrokeStyle(
-                                    lineWidth: 10,
-                                    lineCap: .round,
-                                    lineJoin: .round))
-                                .foregroundColor(.yellow)
-                        }//Zstack
-                        .padding(30)
-                        .frame(height: geo.size.width)
-                        .rotationEffect(.degrees(-90))
-                        .animation(.easeInOut(duration: 1.5), value: progress)
-                        .overlay(
-                                ZStack{
-                                    Circle()
-                                        .fill(.yellow)
-                                        .padding(36)
-
-                                    Text("Não")
-                                        .foregroundColor(.black)
-                                        .bold()
-                                        .font(.system(size: 60))
-                                }//Zstack
-                        )//overlay
-                        .onReceive(timer){ _ in
-                            progress -= 0.017
-                            count -= 1
-                            if progress <= 0.0 || count <= 0 {
-                                timer.upstream.connect().cancel()
-                            }//if
-                        }//onreceive
-                    }//Zstack
-
-                    Spacer()
-
-//                    NavigationLink(destination: Bem()){
-                        Button{} label: {
-                            Text("Sim")
-                                .foregroundColor(.black)
-                                .font(.title)
-                                .bold()
-                                .padding(30)
-                        }
-                        .background(Color(.yellow))
-                        .clipShape(RoundedRectangle(cornerRadius: 40))
-                        .padding(60)
-                    }
-
-                    Spacer()
-                }//Vstack
-            }//Geometryreader
-//        }
-    }//body
+            VStack {
+                Text("G - Force in Crash")
+                    .font(.title)
+                    .bold()
+                Text("\(viewModel.gforce.gforce)")
+                Text("\(viewModel.gforce.timestamp)")
+                NavigationLink(
+                    destination: Acionado(),
+                    isActive: Binding<Bool>(
+                        get: { self.oldTimestamp != viewModel.gforce.timestamp && firstRead == false},
+                        set: { _ in }
+                    ),
+                    label: { EmptyView() }
+                    )
+            }
+            .onChange(of: viewModel.gforce.timestamp) { newValue in
+                if(firstRead == true){
+                    firstRead = false
+                }
+                if self.oldTimestamp != newValue {
+                    self.oldTimestamp = newValue
+                }
+            }
+        }
+        .onAppear {
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                viewModel.fetch()
+            }
+        }
+    }
 }//View
 
 struct ContentView_Previews: PreviewProvider {
@@ -87,5 +51,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-//adicionar navigationlink
