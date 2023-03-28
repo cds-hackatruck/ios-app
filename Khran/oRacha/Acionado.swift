@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct Acionado: View {
     @State private var progress = 1.0
     @State private var count = 60
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    @State var pushActive = false
+    
+    @State var audioPlayer: AVAudioPlayer!
+    
+    @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
         NavigationStack{
@@ -35,7 +40,7 @@ struct Acionado: View {
                                     lineJoin: .round))
                                 .foregroundColor(.yellow)
                         }//Zstack
-                        .padding(30)
+                        .padding(60)
                         .frame(height: geo.size.width)
                         .rotationEffect(.degrees(-90))
                         .animation(.easeInOut(duration: 1.5), value: progress)
@@ -43,7 +48,7 @@ struct Acionado: View {
                                 ZStack{
                                     Circle()
                                         .fill(.yellow)
-                                        .padding(36)
+                                        .padding(66)
 
                                     Text("Não")
                                         .foregroundColor(.black)
@@ -56,29 +61,54 @@ struct Acionado: View {
                             count -= 1
                             if progress <= 0.0 || count <= 0 {
                                 timer.upstream.connect().cancel()
+                                self.pushActive = true
                             }//if
                         }//onreceive
-                    }//Zstack
+                    }//Navigationlink
 
                     Spacer()
 
                     NavigationLink(destination: Bem()){
-                            Text("Sim")
-                                .foregroundColor(.black)
-                                .font(.title)
-                                .bold()
-                                .padding(30)
+                        Text("Sim")
+                        .foregroundColor(.black)
+                        .font(.title)
+                        .bold()
+                        .padding(30)
                         .background(Color(.yellow))
                         .clipShape(RoundedRectangle(cornerRadius: 40))
                         .padding(60)
-                    }
+                    }//Navigationlink
 
                     Spacer()
+                    
+                    NavigationLink(destination: naoBem(),
+                       isActive: self.$pushActive) {}.hidden()
                 }//Vstack
             }//Geometryreader
-        }
+            .onDisappear() {
+                self.timer.upstream.connect().cancel()
+            }//onDisappear
+        }//Navigationstack
+//        .onAppear(perform: {
+//          playSounds("")
+//        })
     }//body
+    
+    func playSounds(_ soundFileName : String) {
+        guard let soundURL = Bundle.main.url(forResource: soundFileName,
+                                             withExtension: nil) else {
+            fatalError("Unable to find \(soundFileName) in bundle")
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+        } catch {
+            print(error.localizedDescription)
+        }
+        audioPlayer.play()
+    }
 }//View
+    
 
 struct Acionado_Previews: PreviewProvider {
     static var previews: some View {

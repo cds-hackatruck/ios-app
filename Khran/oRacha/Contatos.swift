@@ -19,16 +19,19 @@ struct Escolher: Identifiable{
     let contato: [Contato]
 }
 
-let emergencia: [Escolher] = [
-    Escolher(titulo: "Se comunique", contato: [
-        Contato(nome: "Ambulância", fone: "192"),
-        Contato(nome: "Bombeiros", fone: "193"),
-        Contato(nome: "Polícia", fone: "190")
-    ]),
-    Escolher(titulo: "Contatos de emergência", contato: [
-        Contato(nome: "Mãe", fone: "00000000"),
-        Contato(nome: "Pai", fone: "00000000"),
-        Contato(nome: "Tio", fone: "00000000"),
-        Contato(nome: "Irmão", fone: "00000000")
-    ])
-]
+struct Ligar {
+    static let emergencia: [Escolher] = [
+        Escolher(titulo: "Se comunique", contato: [
+            Contato(nome: "Ambulância", fone: "192"),
+            Contato(nome: "Bombeiros", fone: "193"),
+            Contato(nome: "Polícia", fone: "190")
+        ]),
+        Escolher(titulo: "Contatos de emergência", contato: [
+            Contato(nome: "Mãe", fone: "00000000"),
+            Contato(nome: "Pai", fone: "00000000"),
+            Contato(nome: "Tio", fone: "00000000"),
+            Contato(nome: "Irmão", fone: "00000000")
+        ])
+    ]
+}
+

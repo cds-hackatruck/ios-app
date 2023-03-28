@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Bem: View {
-    @State var teste = emergencia
+    @State var falso = Ligar.emergencia
     
     var body: some View {
         NavigationStack{
@@ -35,7 +35,7 @@ struct Bem: View {
 
                 Spacer()
 
-                List(emergencia){emerg in
+                List(falso){emerg in
                   Section(header: Text("\(emerg.titulo)")
                     .font(.system(size:20))
                   ){

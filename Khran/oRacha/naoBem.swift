@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct naoBem: View {
-    @State var teste = emergencia
+    @State var toMal = Ligar.emergencia
     
     var body: some View {
         VStack{
@@ -19,7 +19,7 @@ struct naoBem: View {
 
             NavigationStack{
                 List{
-                    ForEach(teste){emergencia in
+                    ForEach(toMal){emergencia in
                         Section(header: Text("\(emergencia.titulo)")){
                             ForEach(emergencia.contato){contato in
                                 VStack{
