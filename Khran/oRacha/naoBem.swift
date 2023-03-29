@@ -20,7 +20,7 @@ struct naoBem: View {
                             HStack{
                                 Image(systemName: "arrowshape.turn.up.backward.fill")
                                 
-                                Text("teste")
+                                Text("Retornar ao início")
                             }
                         })
                     }

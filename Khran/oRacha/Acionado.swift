@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AVFoundation
+import AVKit
 
 struct Acionado: View {
     @State private var progress = 1.0
@@ -16,19 +16,19 @@ struct Acionado: View {
     @State var audioPlayer: AVAudioPlayer!
     
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
+    
     var body: some View {
         NavigationStack{
             GeometryReader {geo in
                 VStack{
                     Spacer()
-
+                    
                     Text("Você está bem?")
                         .bold()
                         .font(.system(size: 38))
-
+                    
                     Spacer()
-
+                    
                     
                     NavigationLink(destination: naoBem()){
                         ZStack{
@@ -49,7 +49,7 @@ struct Acionado: View {
                                 Circle()
                                     .fill(.yellow)
                                     .padding(66)
-                                    
+                                
                                 Text("Não")
                                     .foregroundColor(.black)
                                     .bold()
@@ -65,24 +65,24 @@ struct Acionado: View {
                             }//if
                         }//onreceive
                     }//Navigationlink
-
+                    
                     Spacer()
-
+                    
                     NavigationLink(destination: Bem()){
                         Text("Sim")
-                        .foregroundColor(.black)
-                        .font(.title)
-                        .bold()
-                        .padding(30)
-                        .background(Color(.yellow))
-                        .clipShape(RoundedRectangle(cornerRadius: 40))
-                        .padding(60)
+                            .foregroundColor(.black)
+                            .font(.title)
+                            .bold()
+                            .padding(30)
+                            .background(Color(.yellow))
+                            .clipShape(RoundedRectangle(cornerRadius: 40))
+                            .padding(60)
                     }//Navigationlink
-
+                    
                     Spacer()
                     
                     NavigationLink(destination: naoBem(),
-                       isActive: self.$pushActive) {}.hidden()
+                                   isActive: self.$pushActive) {}.hidden()
                 }//Vstack
             }//Geometryreader
             .onDisappear() {
@@ -90,27 +90,18 @@ struct Acionado: View {
             }//onDisappear
         }//Navigationstack
         
-//        .onAppear(perform: {
-//          playSounds("")
-//        })
+        .onAppear{
+            audio(input: "gemido-whatsapp")
+        }
         
     }//body
     
-    func playSounds(_ soundFileName : String) {
-        guard let soundURL = Bundle.main.url(forResource: soundFileName,
-                                             withExtension: nil) else {
-            fatalError("Unable to find \(soundFileName) in bundle")
-        }
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-        } catch {
-            print(error.localizedDescription)
-        }
-        audioPlayer.play()
+    func audio(input : String) {
+        let sound = Bundle.main.path(forResource: input, ofType: "mp3")
+        self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+        self.audioPlayer.play()
     }
-}//View
-    
+}
 
 struct Acionado_Previews: PreviewProvider {
     static var previews: some View {

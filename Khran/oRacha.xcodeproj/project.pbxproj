@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FB5F309329D26745006000F8 /* naoBem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F309229D26745006000F8 /* naoBem.swift */; };
 		FB5F309529D26CAC006000F8 /* Contatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5F309429D26CAC006000F8 /* Contatos.swift */; };
+		FB71780429D4FF08004D481C /* gemido-whatsapp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB71780329D4FF08004D481C /* gemido-whatsapp.mp3 */; };
 		FBF3E8BD29BFDA1A006A978E /* oRachaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3E8BC29BFDA1A006A978E /* oRachaApp.swift */; };
 		FBF3E8BF29BFDA1A006A978E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3E8BE29BFDA1A006A978E /* ContentView.swift */; };
 		FBF3E8C129BFDA1B006A978E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF3E8C029BFDA1B006A978E /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		FB5F309229D26745006000F8 /* naoBem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = naoBem.swift; sourceTree = "<group>"; };
 		FB5F309429D26CAC006000F8 /* Contatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contatos.swift; sourceTree = "<group>"; };
+		FB71780329D4FF08004D481C /* gemido-whatsapp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "gemido-whatsapp.mp3"; path = "../../../../gemido-whatsapp.mp3"; sourceTree = "<group>"; };
 		FBF3E8B929BFDA1A006A978E /* oRacha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = oRacha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF3E8BC29BFDA1A006A978E /* oRachaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oRachaApp.swift; sourceTree = "<group>"; };
 		FBF3E8BE29BFDA1A006A978E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				FBF3E8D429BFDBE8006A978E /* Bem.swift */,
 				FB5F309229D26745006000F8 /* naoBem.swift */,
 				FB5F309429D26CAC006000F8 /* Contatos.swift */,
+				FB71780329D4FF08004D481C /* gemido-whatsapp.mp3 */,
 				FBF3E8C029BFDA1B006A978E /* Assets.xcassets */,
 				FBF3E8C229BFDA1B006A978E /* Preview Content */,
 				FD967BD429D3990900EA3790 /* ViewModel.swift */,
@@ -140,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB71780429D4FF08004D481C /* gemido-whatsapp.mp3 in Resources */,
 				FBF3E8C429BFDA1B006A978E /* Preview Assets.xcassets in Resources */,
 				FBF3E8C129BFDA1B006A978E /* Assets.xcassets in Resources */,
 			);

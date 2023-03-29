@@ -21,7 +21,7 @@ struct Bem: View {
                                 HStack{
                                     Image(systemName: "arrowshape.turn.up.backward.fill")
                                     
-                                    Text("Voltar ao início")
+                                    Text("Retornar ao início")
                                 }
                             })
                         }
