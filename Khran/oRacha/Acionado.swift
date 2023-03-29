@@ -89,9 +89,11 @@ struct Acionado: View {
                 self.timer.upstream.connect().cancel()
             }//onDisappear
         }//Navigationstack
+        
 //        .onAppear(perform: {
 //          playSounds("")
 //        })
+        
     }//body
     
     func playSounds(_ soundFileName : String) {

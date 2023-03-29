@@ -11,39 +11,45 @@ struct naoBem: View {
     @State var toMal = Ligar.emergencia
     
     var body: some View {
-        VStack{
-            Text("Emergência acionada")
-                .padding(41)
-                .bold()
-                .font(.system(size: 30))
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {                                    Button {} label: {
-                            HStack {
-                                Image(systemName: "chevron.backward")
-                                Text("Custom Back")
-                            }
-                        }
-                    }
-                }
-
-            NavigationStack{
-                List{
-                    ForEach(toMal){emergencia in
-                        Section(header: Text("\(emergencia.titulo)")){
-                            ForEach(emergencia.contato){contato in
-                                VStack{
-                                    Text("\(contato.nome)")
-                                }//Vstack
-                            }//ForEach
-                        }//Section
-                    }//ForEach
-                }//List
-                .scrollContentBackground(.hidden)
+        ZStack{
+            Spacer()
                 .navigationBarBackButtonHidden()
-//                                .navigationTitle("Emergência acionada")
-//                                .navigationBarTitleDisplayMode(.large)
-            }//Navigationstack
-        }//Vstack
+                .toolbar(content: {
+                    ToolbarItem(placement: .navigationBarLeading){
+                        NavigationLink(destination: ContentView(), label: {
+                            HStack{
+                                Image(systemName: "arrowshape.turn.up.backward.fill")
+                                
+                                Text("teste")
+                            }
+                        })
+                    }
+                })
+            
+            VStack{
+                Text("Emergência acionada")
+                    .padding(41)
+                    .bold()
+                    .font(.system(size: 30))
+
+                NavigationStack{
+                    List{
+                        ForEach(toMal){emergencia in
+                            Section(header: Text("\(emergencia.titulo)")){
+                                ForEach(emergencia.contato){contato in
+                                    VStack{
+                                        Text("\(contato.nome)")
+                                    }//Vstack
+                                }//ForEach
+                            }//Section
+                        }//ForEach
+                    }//List
+                    .scrollContentBackground(.hidden)
+    //                                .navigationTitle("Emergência acionada")
+    //                                .navigationBarTitleDisplayMode(.large)
+                }//Navigationstack
+            }//Vstack
+        }//Zstack
     }//body
 }//struct
 

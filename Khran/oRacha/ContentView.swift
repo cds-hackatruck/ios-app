@@ -13,38 +13,43 @@ struct ContentView: View {
     @State var firstRead = true
     
     var body: some View {
-        NavigationStack{
-            VStack {
-                Text("G - Force in Crash")
-                    .font(.title)
-                    .bold()
-                Text("\(viewModel.gforce.gforce)")
-                Text("\(viewModel.gforce.timestamp)")
-                HStack{
-                    Text("\(viewModel.gforce.position.latitude)")
-                    Text("\(viewModel.gforce.position.longitude)")
+        ZStack{
+            Spacer()
+                .navigationBarBackButtonHidden()
+            
+            NavigationStack{
+                VStack {
+                    Text("G - Force in Crash")
+                        .font(.title)
+                        .bold()
+                    Text("\(viewModel.gforce.gforce)")
+                    Text("\(viewModel.gforce.timestamp)")
+                    HStack{
+                        Text("\(viewModel.gforce.position.latitude)")
+                        Text("\(viewModel.gforce.position.longitude)")
+                    }
+                    NavigationLink(
+                        destination: Acionado(),
+                        isActive: Binding<Bool>(
+                            get: { self.oldTimestamp != viewModel.gforce.timestamp && firstRead == false},
+                            set: { _ in }
+                        ),
+                        label: { EmptyView() }
+                        )
                 }
-                NavigationLink(
-                    destination: Acionado(),
-                    isActive: Binding<Bool>(
-                        get: { self.oldTimestamp != viewModel.gforce.timestamp && firstRead == false},
-                        set: { _ in }
-                    ),
-                    label: { EmptyView() }
-                    )
+                .onChange(of: viewModel.gforce.timestamp) { newValue in
+                    if(firstRead == true){
+                        firstRead = false
+                    }
+                    if self.oldTimestamp != newValue {
+                        self.oldTimestamp = newValue
+                    }
+                }
             }
-            .onChange(of: viewModel.gforce.timestamp) { newValue in
-                if(firstRead == true){
-                    firstRead = false
+            .onAppear {
+                Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+                    viewModel.fetch()
                 }
-                if self.oldTimestamp != newValue {
-                    self.oldTimestamp = newValue
-                }
-            }
-        }
-        .onAppear {
-            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-                viewModel.fetch()
             }
         }
     }
