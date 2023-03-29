@@ -20,6 +20,10 @@ struct ContentView: View {
                     .bold()
                 Text("\(viewModel.gforce.gforce)")
                 Text("\(viewModel.gforce.timestamp)")
+                HStack{
+                    Text("\(viewModel.gforce.position.latitude)")
+                    Text("\(viewModel.gforce.position.longitude)")
+                }
                 NavigationLink(
                     destination: Acionado(),
                     isActive: Binding<Bool>(

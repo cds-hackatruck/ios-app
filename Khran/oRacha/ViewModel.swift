@@ -10,10 +10,16 @@ import Foundation
 struct D_Packet : Codable{
     var timestamp : Int
     var gforce : Float
+    var position : Position
+}
+
+struct Position : Codable{
+    var latitude : Float
+    var longitude : Float
 }
 
 class ViewModel : ObservableObject {
-    @Published var gforce : D_Packet = D_Packet(timestamp: 0, gforce: 0)
+    @Published var gforce : D_Packet = D_Packet(timestamp: 0, gforce: 0, position: Position(latitude: 0, longitude: 0))
     
     func fetch(){
         print("fetch")
