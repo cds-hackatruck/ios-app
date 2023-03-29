@@ -16,6 +16,15 @@ struct naoBem: View {
                 .padding(41)
                 .bold()
                 .font(.system(size: 30))
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {                                    Button {} label: {
+                            HStack {
+                                Image(systemName: "chevron.backward")
+                                Text("Custom Back")
+                            }
+                        }
+                    }
+                }
 
             NavigationStack{
                 List{
@@ -30,6 +39,7 @@ struct naoBem: View {
                     }//ForEach
                 }//List
                 .scrollContentBackground(.hidden)
+                .navigationBarBackButtonHidden()
 //                                .navigationTitle("Emergência acionada")
 //                                .navigationBarTitleDisplayMode(.large)
             }//Navigationstack

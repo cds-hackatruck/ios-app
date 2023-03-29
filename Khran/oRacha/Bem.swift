@@ -19,6 +19,7 @@ struct Bem: View {
                     .bold()
                     .font(.title)
                     .padding(41)
+                    .navigationBarBackButtonHidden()
 
                 Spacer()
 

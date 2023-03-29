@@ -45,16 +45,16 @@ struct Acionado: View {
                         .rotationEffect(.degrees(-90))
                         .animation(.easeInOut(duration: 1.5), value: progress)
                         .overlay(
-                                ZStack{
-                                    Circle()
-                                        .fill(.yellow)
-                                        .padding(66)
-
-                                    Text("Não")
-                                        .foregroundColor(.black)
-                                        .bold()
-                                        .font(.system(size: 60))
-                                }//Zstack
+                            ZStack{
+                                Circle()
+                                    .fill(.yellow)
+                                    .padding(66)
+                                    
+                                Text("Não")
+                                    .foregroundColor(.black)
+                                    .bold()
+                                    .font(.system(size: 60))
+                            }//Zstack
                         )//overlay
                         .onReceive(timer){ _ in
                             progress -= 0.017
