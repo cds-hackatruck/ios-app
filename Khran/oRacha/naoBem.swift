@@ -37,7 +37,16 @@ struct naoBem: View {
                         Section(header: Text("\(toMal.titulo)")){
                             ForEach(toMal.contato){ contato in
                                 VStack{
-                                    Text("\(contato.firstName) \(contato.lastName)")
+                                    Button(action: {
+                                        let phoneNumberformatted = ("tel://\(contato.phoneNumber!.stringValue.filter("0123456789.".contains))")
+                                        print(phoneNumberformatted)
+                                        
+                                        guard let url = URL(string: phoneNumberformatted) else { return }
+                                        
+                                        UIApplication.shared.open(url)
+                                    }) {
+                                        Text("\(contato.firstName) \(contato.lastName)")
+                                    }
                                 }//Vstack
                             }//ForEach
                         }//Section

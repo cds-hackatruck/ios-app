@@ -56,9 +56,16 @@ struct Bem: View {
                       ){
                           ForEach(falso.contato){ contato in
                               VStack{
-                                  Text("\(contato.firstName)")
-                                      .bold()
-                                      .font(.system(size: 20))
+                                  Button(action: {
+                                      let phoneNumberformatted = ("tel://\(contato.phoneNumber!.stringValue.filter("0123456789.".contains))")
+                                      print(phoneNumberformatted)
+                                      
+                                      guard let url = URL(string: phoneNumberformatted) else { return }
+                                      
+                                      UIApplication.shared.open(url)
+                                  }) {
+                                      Text("\(contato.firstName) \(contato.lastName)")
+                                  }
                               }//Vstack
                           }//ForEach
                       } //Section
