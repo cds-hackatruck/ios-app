@@ -38,7 +38,7 @@ struct naoBem: View {
                             Section(header: Text("\(emergencia.titulo)")){
                                 ForEach(emergencia.contato){contato in
                                     VStack{
-                                        Text("\(contato.nome)")
+                                        Text("\(contato.firstName)")
                                     }//Vstack
                                 }//ForEach
                             }//Section

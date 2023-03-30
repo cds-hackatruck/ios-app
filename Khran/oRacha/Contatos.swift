@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Contacts
 
 struct Contato: Hashable, Identifiable{
     let id = UUID()
@@ -13,25 +14,22 @@ struct Contato: Hashable, Identifiable{
     let fone: String
 }
 
+/*
 struct Escolher: Identifiable{
     let id = UUID()
     let titulo: String
-    let contato: [Contato]
+    let contato: [ContactInfo]
 }
 
 struct Ligar {
     static let emergencia: [Escolher] = [
         Escolher(titulo: "Se comunique", contato: [
-            Contato(nome: "Ambulância", fone: "192"),
-            Contato(nome: "Bombeiros", fone: "193"),
-            Contato(nome: "Polícia", fone: "190")
+            ContactInfo.init(firstName: "Ambulância", lastName: "", phoneNumber: "192"),
+            ContactInfo.init(firstName: "Bombeiros", lastName: "", phoneNumber: "193"),
+            ContactInfo.init(firstName: "Polícia", lastName: "", phoneNumber: "190")
         ]),
-        Escolher(titulo: "Contatos de emergência", contato: [
-            Contato(nome: "Mãe", fone: "00000000"),
-            Contato(nome: "Pai", fone: "00000000"),
-            Contato(nome: "Tio", fone: "00000000"),
-            Contato(nome: "Irmão", fone: "00000000")
-        ])
+        Escolher(titulo: "Contatos de emergência", contato: addedContacts)
     ]
 }
+ */
 

@@ -36,6 +36,11 @@ struct ContentView: View {
                         ),
                         label: { EmptyView() }
                         )
+                    // Botão para mandar para a página de adicionar contatos favoritos
+                    NavigationLink(
+                        destination: AddContatos(),
+                        label: {Text("Adicionar contatos")}
+                    )
                 }
                 .onChange(of: viewModel.gforce.timestamp) { newValue in
                     if(firstRead == true){

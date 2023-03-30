@@ -56,7 +56,7 @@ struct Bem: View {
                       ){
                           ForEach(emerg.contato){contato in
                               VStack{
-                                  Text("\(contato.nome)")
+                                  Text("\(contato.firstName)")
                                       .bold()
                                       .font(.system(size: 20))
                               }//Vstack

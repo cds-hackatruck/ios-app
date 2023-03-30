@@ -16,6 +16,9 @@
 		FBF3E8D329BFDBD3006A978E /* Acionado.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3E8D229BFDBD3006A978E /* Acionado.swift */; };
 		FBF3E8D529BFDBE8006A978E /* Bem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF3E8D429BFDBE8006A978E /* Bem.swift */; };
 		FC386C6329D504E400E18B14 /* gemido-whatsapp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FC386C6229D504E400E18B14 /* gemido-whatsapp.mp3 */; };
+		FC386C6529D5063000E18B14 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC386C6429D5063000E18B14 /* ContactRow.swift */; };
+		FC386C6729D5066B00E18B14 /* AddContatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC386C6629D5066B00E18B14 /* AddContatos.swift */; };
+		FC386C6929D506A400E18B14 /* MakeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC386C6829D506A400E18B14 /* MakeCall.swift */; };
 		FD967BD529D3990900EA3790 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD967BD429D3990900EA3790 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +33,9 @@
 		FBF3E8D229BFDBD3006A978E /* Acionado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Acionado.swift; sourceTree = "<group>"; };
 		FBF3E8D429BFDBE8006A978E /* Bem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bem.swift; sourceTree = "<group>"; };
 		FC386C6229D504E400E18B14 /* gemido-whatsapp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "gemido-whatsapp.mp3"; sourceTree = "<group>"; };
+		FC386C6429D5063000E18B14 /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
+		FC386C6629D5066B00E18B14 /* AddContatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContatos.swift; sourceTree = "<group>"; };
+		FC386C6829D506A400E18B14 /* MakeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCall.swift; sourceTree = "<group>"; };
 		FD967BD429D3990900EA3790 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +79,9 @@
 				FBF3E8C229BFDA1B006A978E /* Preview Content */,
 				FD967BD429D3990900EA3790 /* ViewModel.swift */,
 				FC386C6229D504E400E18B14 /* gemido-whatsapp.mp3 */,
+				FC386C6429D5063000E18B14 /* ContactRow.swift */,
+				FC386C6629D5066B00E18B14 /* AddContatos.swift */,
+				FC386C6829D506A400E18B14 /* MakeCall.swift */,
 			);
 			path = oRacha;
 			sourceTree = "<group>";
@@ -163,6 +172,9 @@
 				FBF3E8BD29BFDA1A006A978E /* oRachaApp.swift in Sources */,
 				FBF3E8D329BFDBD3006A978E /* Acionado.swift in Sources */,
 				FBF3E8D529BFDBE8006A978E /* Bem.swift in Sources */,
+				FC386C6929D506A400E18B14 /* MakeCall.swift in Sources */,
+				FC386C6529D5063000E18B14 /* ContactRow.swift in Sources */,
+				FC386C6729D5066B00E18B14 /* AddContatos.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
