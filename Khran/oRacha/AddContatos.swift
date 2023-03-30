@@ -28,6 +28,14 @@ struct Ligar {
     ]
 }
 
+struct Teste {
+    static var em = Escolher(titulo: "Contatos de emergência", contato: [
+        ContactInfo.init(firstName: "Ambulância", lastName: "", phoneNumber: CNPhoneNumber(stringValue: "192")),
+        ContactInfo.init(firstName: "Bombeiros", lastName: "", phoneNumber: CNPhoneNumber(stringValue: "193")),
+        ContactInfo.init(firstName: "Polícia", lastName: "", phoneNumber: CNPhoneNumber(stringValue: "190"))
+    ])
+}
+
 struct AddContatos: View {
     @State private var contacts = [ContactInfo.init(firstName: "", lastName: "", phoneNumber: nil)]
     @State private var searchText = ""
@@ -80,15 +88,11 @@ struct AddContatos: View {
                         Spacer()
                         if !addedContacts.contains(where: { $0.id == contact.id }) {
                             Button(action: {
-                                Ligar.emergencia[1].contato.append(contact)
+                                Teste.em.contato.append(contact)
+                                addedContacts.append(contact)
                             }) {
                                 Image(systemName: "plus")
                             }
-                        }
-                    }
-                    .onTapGesture {
-                        if !addedContacts.contains(where: { $0.id == contact.id }) {
-                            addedContacts.append(contact)
                         }
                     }
                 }
@@ -101,10 +105,10 @@ struct AddContatos: View {
             Spacer()
             
             List {
-                ForEach(addedContacts, id: \.id) { contato in
-                    Text("\(contato.firstName) \(contato.lastName)")
+                ForEach(Teste.em.contato, id: \.id) { contato in
+                        Text("\(contato.firstName) \(contato.lastName)")
+                    }
                 }
-            }
         }
     }
     
@@ -136,6 +140,8 @@ struct AddContatos: View {
         }
     }
 }
+
+var ligar = Ligar()
 
 struct AddContatos_Previews: PreviewProvider {
     static var previews: some View {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Bem: View {
-    @State var falso = Ligar.emergencia
+    @State var falso = Teste.em
     
     var body: some View {
         NavigationStack{
@@ -50,18 +50,18 @@ struct Bem: View {
 
                     Spacer()
 
-                    List(falso){emerg in
-                      Section(header: Text("\(emerg.titulo)")
+                    List{
+                      Section(header: Text("\(falso.titulo)")
                         .font(.system(size:20))
                       ){
-                          ForEach(emerg.contato){contato in
+                          ForEach(falso.contato){ contato in
                               VStack{
                                   Text("\(contato.firstName)")
                                       .bold()
                                       .font(.system(size: 20))
                               }//Vstack
                           }//ForEach
-                      }//Section
+                      } //Section
                     }//List
                      .scrollContentBackground(.hidden)
                 }//Vstack
