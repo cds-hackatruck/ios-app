@@ -3,7 +3,7 @@
 //  oRacha
 //
 //  Created by Student17 on 13/03/23.
-//
+// fcc010 - amarelo
 
 import SwiftUI
 
@@ -19,15 +19,72 @@ struct ContentView: View {
             
             NavigationStack{
                 VStack {
-                    Text("G - Force in Crash")
-                        .font(.title)
+                    Text("Khran")
+                        .navigationBarTitleDisplayMode(.inline)
+                        .font(.system(size: 60))
                         .bold()
-                    Text("\(viewModel.gforce.gforce)")
-                    Text("\(viewModel.gforce.timestamp)")
+                        .padding(.bottom, 60)
+                        .padding(.top, 40)
+                    
+                    VStack{
+                        Text("G - Force Atual")
+                            .font(.system(size: 30))
+                            .bold()
+                            .foregroundColor(.black)
+                            .toolbar{
+                                NavigationLink(destination: AddContatos(),
+                                               label: {Image(systemName: "gear")}
+                                )//Navigationlink
+                                .font(.title)
+                            }//toolbar
+                        
+                        Text("\(viewModel.gforce.gforce)")
+                            .padding(.top, -5)
+                            .foregroundColor(.black)
+                            .font(.title)
+                    }//Vstack
+                    .padding()
+                    .background(Color(.yellow))
+                    .clipShape(RoundedRectangle(cornerRadius: 30))
+                    
+                    Spacer()
+                    
+//                    Text("\(viewModel.gforce.timestamp)")
+                    
+//                    Spacer()
+                    
                     HStack{
-                        Text("\(viewModel.gforce.position.latitude)")
-                        Text("\(viewModel.gforce.position.longitude)")
-                    }
+                        VStack{
+                            Text("Latitude")
+                                .bold()
+                                .foregroundColor(.black)
+                                .font(.title2)
+                            
+                            Text("\(viewModel.gforce.position.latitude)")
+                                .font(.title2)
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                        .background(Color(.yellow))
+                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                        
+                        VStack{
+                            Text("Longitude")
+                                .bold()
+                                .foregroundColor(.black)
+                                .font(.title2)
+                            
+                            Text("\(viewModel.gforce.position.longitude)")
+                                .font(.title2)
+                                .foregroundColor(.black)
+                        }
+                        .padding()
+                        .background(Color(.yellow))
+                        .clipShape(RoundedRectangle(cornerRadius: 30))
+                    }//Hstack
+                    
+                    Spacer()
+                    
                     NavigationLink(
                         destination: Acionado(),
                         isActive: Binding<Bool>(
@@ -35,29 +92,24 @@ struct ContentView: View {
                             set: { _ in }
                         ),
                         label: { EmptyView() }
-                        )
-                    // Botão para mandar para a página de adicionar contatos favoritos
-                    NavigationLink(
-                        destination: AddContatos(),
-                        label: {Text("Adicionar contatos")}
-                    )
-                }
+                    )//Naviagtionlink
+                }//Vstack
                 .onChange(of: viewModel.gforce.timestamp) { newValue in
                     if(firstRead == true){
                         firstRead = false
-                    }
+                    }//if
                     if self.oldTimestamp != newValue {
                         self.oldTimestamp = newValue
-                    }
-                }
-            }
+                    }//if
+                }//onchange
+            }//Navigationstack
             .onAppear {
                 Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
                     viewModel.fetch()
-                }
-            }
-        }
-    }
+                }//timer
+            }//onappear
+        }//Zstack
+    }//body
 }//View
 
 struct ContentView_Previews: PreviewProvider {
@@ -65,3 +117,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
