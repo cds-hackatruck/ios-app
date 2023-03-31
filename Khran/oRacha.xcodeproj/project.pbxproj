@@ -18,6 +18,7 @@
 		FC386C6529D5063000E18B14 /* ContactRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC386C6429D5063000E18B14 /* ContactRow.swift */; };
 		FC386C6729D5066B00E18B14 /* AddContatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC386C6629D5066B00E18B14 /* AddContatos.swift */; };
 		FC386C6929D506A400E18B14 /* MakeCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC386C6829D506A400E18B14 /* MakeCall.swift */; };
+		FCEADEE029D6678C0030ADDC /* som-notificacao.wav in Resources */ = {isa = PBXBuildFile; fileRef = FCEADEDF29D6678C0030ADDC /* som-notificacao.wav */; };
 		FD967BD529D3990900EA3790 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD967BD429D3990900EA3790 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		FC386C6429D5063000E18B14 /* ContactRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactRow.swift; sourceTree = "<group>"; };
 		FC386C6629D5066B00E18B14 /* AddContatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContatos.swift; sourceTree = "<group>"; };
 		FC386C6829D506A400E18B14 /* MakeCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCall.swift; sourceTree = "<group>"; };
+		FCEADEDF29D6678C0030ADDC /* som-notificacao.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "som-notificacao.wav"; path = "../../../../../Downloads/som-notificacao.wav"; sourceTree = "<group>"; };
 		FD967BD429D3990900EA3790 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 				FC386C6429D5063000E18B14 /* ContactRow.swift */,
 				FC386C6629D5066B00E18B14 /* AddContatos.swift */,
 				FC386C6829D506A400E18B14 /* MakeCall.swift */,
+				FCEADEDF29D6678C0030ADDC /* som-notificacao.wav */,
 			);
 			path = oRacha;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBF3E8C429BFDA1B006A978E /* Preview Assets.xcassets in Resources */,
+				FCEADEE029D6678C0030ADDC /* som-notificacao.wav in Resources */,
 				FBF3E8C129BFDA1B006A978E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -96,13 +96,13 @@ struct Acionado: View {
         }//Navigationstack
         
         .onAppear{
-            audio(input: "gemido-whatsapp")
+            audio(input: "som-notificacao")
         }
         
     }//body
     
     func audio(input : String) {
-        let sound = Bundle.main.path(forResource: input, ofType: "mp3")
+        let sound = Bundle.main.path(forResource: input, ofType: "wav")
         self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
         self.audioPlayer.play()
     }
