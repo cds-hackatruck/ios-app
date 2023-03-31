@@ -43,72 +43,77 @@ struct AddContatos: View {
     @State private var addedContacts: [ContactInfo] = []
     
     var body: some View {
-        VStack {
-            HStack {
-                HStack {
-                   //search bar magnifying glass image
-                   Image(systemName: "magnifyingglass").foregroundColor(.secondary)
-                            
-                   //search bar text field
-                   TextField("search", text: self.$searchText, onEditingChanged: { isEditing in
-                   self.showCancelButton = true
-                   })
-                   
-                   // x Button
-                   Button(action: {
-                       self.searchText = ""
-                   }) {
-                       Image(systemName: "xmark.circle.fill")
-                            .foregroundColor(.secondary)
-                              .opacity(self.searchText == "" ? 0 : 1)
-                      }
-                }
-                .padding(8)
-                .background(Color(.secondarySystemBackground))
-                .cornerRadius(8)
-                            
-                  // Cancel Button
-                  if self.showCancelButton  {
-                      Button("Cancel") {
-                         UIApplication.shared.endEditing(true)
-                         self.searchText = ""
-                         self.showCancelButton = false
-                   }
-                 }
-               }
-                .padding([.leading, .trailing,.top])
+        ZStack{
+            Color("amarelo")
+                .ignoresSafeArea(.all)
             
-            List {
-                ForEach (self.contacts.filter({ (cont) -> Bool in
-                    self.searchText.isEmpty ? true :
-                        "\(cont)".lowercased().contains(self.searchText.lowercased())
-                })) { contact in
+            VStack {
+                HStack {
                     HStack {
-                        ContactRow(contact: contact)
-                        Spacer()
-                        if !addedContacts.contains(where: { $0.id == contact.id }) {
-                            Button(action: {
-                                Teste.em.contato.append(contact)
-                                addedContacts.append(contact)
-                            }) {
-                                Image(systemName: "plus")
+                       //search bar magnifying glass image
+                       Image(systemName: "magnifyingglass").foregroundColor(.secondary)
+                                
+                       //search bar text field
+                       TextField("search", text: self.$searchText, onEditingChanged: { isEditing in
+                       self.showCancelButton = true
+                       })
+                       
+                       // x Button
+                       Button(action: {
+                           self.searchText = ""
+                       }) {
+                           Image(systemName: "xmark.circle.fill")
+                                .foregroundColor(.secondary)
+                                  .opacity(self.searchText == "" ? 0 : 1)
+                          }
+                    }
+                    .padding(8)
+                    .background(Color(.secondarySystemBackground))
+                    .cornerRadius(8)
+                                
+                      // Cancel Button
+                      if self.showCancelButton  {
+                          Button("Cancel") {
+                             UIApplication.shared.endEditing(true)
+                             self.searchText = ""
+                             self.showCancelButton = false
+                       }
+                     }
+                   }
+                    .padding([.leading, .trailing,.top])
+                
+                List {
+                    ForEach (self.contacts.filter({ (cont) -> Bool in
+                        self.searchText.isEmpty ? true :
+                            "\(cont)".lowercased().contains(self.searchText.lowercased())
+                    })) { contact in
+                        HStack {
+                            ContactRow(contact: contact)
+                            Spacer()
+                            if !addedContacts.contains(where: { $0.id == contact.id }) {
+                                Button(action: {
+                                    Teste.em.contato.append(contact)
+                                    addedContacts.append(contact)
+                                }) {
+                                    Image(systemName: "plus")
+                                }
                             }
                         }
                     }
                 }
-            }
-            .onAppear() {
-                self.requestAccess()
-            }
-
-            
-            Spacer()
-            
-            List {
-                ForEach(Teste.em.contato, id: \.id) { contato in
-                        Text("\(contato.firstName) \(contato.lastName)")
-                    }
+                .onAppear() {
+                    self.requestAccess()
                 }
+
+                
+                Spacer()
+                
+                List {
+                    ForEach(Teste.em.contato, id: \.id) { contato in
+                            Text("\(contato.firstName) \(contato.lastName)")
+                        }
+                    }
+            }
         }
     }
     

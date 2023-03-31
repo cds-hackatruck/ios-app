@@ -13,6 +13,9 @@ struct Bem: View {
     var body: some View {
         NavigationStack{
             ZStack{
+                Color(red: 210/255, green: 230/255, blue: 242/255, opacity: 1.0)
+                    .ignoresSafeArea(.all)
+                
                 Spacer()
                     .navigationBarBackButtonHidden()
                     .toolbar(content: {
@@ -30,29 +33,31 @@ struct Bem: View {
                 VStack{
                     Spacer()
 
-                    Text("Se foi um alarme falso:")
+                    Text("Esperamos que tenha sido um alarme falso.")
                         .bold()
                         .font(.title)
                         .padding(41)
+                        .background(Color("amarelo"))
 
                     Spacer()
 
-                    Button{} label:{
-                        Text("Recalibrar")
-                            .foregroundColor(.black)
-                            .padding()
-                            .bold()
-                            .font(.title)
-                    }
-                    .background(Color(.yellow))
-                    .clipShape(RoundedRectangle(cornerRadius: 30))
-                    .padding(60)
+//                    Button{} label:{
+//                        Text("Recalibrar")
+//                            .foregroundColor(.black)
+//                            .padding()
+//                            .bold()
+//                            .font(.title)
+//                    }
+//                    .background(Color("amarelo"))
+//                    .clipShape(RoundedRectangle(cornerRadius: 30))
+//                    .padding(60)
 
                     Spacer()
 
                     List{
                       Section(header: Text("\(falso.titulo)")
                         .font(.system(size:20))
+                        .foregroundColor(.black)
                       ){
                           ForEach(falso.contato){ contato in
                               VStack{

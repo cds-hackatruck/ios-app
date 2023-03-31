@@ -13,12 +13,20 @@ struct ContentView: View {
     @State var firstRead = true
     
     var body: some View {
-        ZStack{
-            Spacer()
-                .navigationBarBackButtonHidden()
+        NavigationStack{
+            ZStack{
+                Color(red: 210/255, green: 230/255, blue: 242/255, opacity: 1.0)
+                    .ignoresSafeArea(.all)
+                
+//                LinearGradient(colors: [Color("marrom"), .orange],
+//                               startPoint: .bottom, endPoint: .center)
+//                .ignoresSafeArea(.all)
+                
+                Spacer()
+                    .navigationBarBackButtonHidden()
             
-            NavigationStack{
-                VStack {
+            
+                VStack{
                     Text("Khran")
                         .navigationBarTitleDisplayMode(.inline)
                         .font(.system(size: 60))
@@ -27,13 +35,14 @@ struct ContentView: View {
                         .padding(.top, 40)
                     
                     VStack{
-                        Text("G - Force Atual")
+                        Text("Aceleração")
                             .font(.system(size: 30))
                             .bold()
                             .foregroundColor(.black)
                             .toolbar{
                                 NavigationLink(destination: AddContatos(),
-                                               label: {Image(systemName: "gear")}
+                                               label: {Image(systemName: "gear")
+                                }
                                 )//Navigationlink
                                 .font(.title)
                             }//toolbar
@@ -44,7 +53,7 @@ struct ContentView: View {
                             .font(.title)
                     }//Vstack
                     .padding()
-                    .background(Color(.yellow))
+                    .background(Color("amarelo"))
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     
                     Spacer()
@@ -63,9 +72,9 @@ struct ContentView: View {
                             Text("\(viewModel.gforce.position.latitude)")
                                 .font(.title2)
                                 .foregroundColor(.black)
-                        }
+                        }//Vstack
                         .padding()
-                        .background(Color(.yellow))
+                        .background(Color("amarelo"))
                         .clipShape(RoundedRectangle(cornerRadius: 30))
                         
                         VStack{
@@ -77,11 +86,13 @@ struct ContentView: View {
                             Text("\(viewModel.gforce.position.longitude)")
                                 .font(.title2)
                                 .foregroundColor(.black)
-                        }
+                        }//Vstack
                         .padding()
-                        .background(Color(.yellow))
+                        .background(Color("amarelo"))
                         .clipShape(RoundedRectangle(cornerRadius: 30))
                     }//Hstack
+                    .frame(width: 400,height: 100)
+                    .background(Color("amarelo"))
                     
                     Spacer()
                     
@@ -90,8 +101,7 @@ struct ContentView: View {
                         isActive: Binding<Bool>(
                             get: { self.oldTimestamp != viewModel.gforce.timestamp && firstRead == false},
                             set: { _ in }
-                        ),
-                        label: { EmptyView() }
+                        ), label: { EmptyView() }
                     )//Naviagtionlink
                 }//Vstack
                 .onChange(of: viewModel.gforce.timestamp) { newValue in
@@ -102,13 +112,13 @@ struct ContentView: View {
                         self.oldTimestamp = newValue
                     }//if
                 }//onchange
-            }//Navigationstack
+            }//Zstack
             .onAppear {
                 Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
                     viewModel.fetch()
                 }//timer
             }//onappear
-        }//Zstack
+        }//Navigationstack
     }//body
 }//View
 

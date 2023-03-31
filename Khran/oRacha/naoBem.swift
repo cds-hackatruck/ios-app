@@ -12,6 +12,9 @@ struct naoBem: View {
     
     var body: some View {
         ZStack{
+            Color("amarelo")
+                .ignoresSafeArea(.all)
+            
             Spacer()
                 .navigationBarBackButtonHidden()
                 .toolbar(content: {
@@ -30,11 +33,14 @@ struct naoBem: View {
                 Text("Emergência acionada")
                     .padding(41)
                     .bold()
+                    .foregroundColor(.black)
                     .font(.system(size: 30))
 
                 NavigationStack{
                     List{
-                        Section(header: Text("\(toMal.titulo)")){
+                        Section(header: Text("\(toMal.titulo)")
+                                            .foregroundColor(.black)
+                                            .font(.callout)){
                             ForEach(toMal.contato){ contato in
                                 VStack{
                                     Button(action: {
@@ -52,8 +58,6 @@ struct naoBem: View {
                         }//Section
                     }//List
                     .scrollContentBackground(.hidden)
-    //                                .navigationTitle("Emergência acionada")
-    //                                .navigationBarTitleDisplayMode(.large)
                 }//Navigationstack
             }//Vstack
         }//Zstack
